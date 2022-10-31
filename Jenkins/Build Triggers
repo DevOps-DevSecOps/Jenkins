@@ -1,1 +1,8 @@
+[Trigger builds remotely]
+If want to trigger project built from anywhere anytime then should select Trigger builds remotely option from the build triggers.
+In Jenkins "Build Triggers" then select "Trigger builds remotely" finally need to set TOKEN_NAME for "Authentication Token".
+Whenever you will hit this URL from anywhere project build will start.
+Jenkins_HTTP_URL://Jenkins_IP_ADDRESS:Jenkins_PORT_NO/job/JOB_NAME/build?token=TOKEN_NAME
 
+[Build after other projects are built]
+If project depends on another project build then should select Build after other projects are built option from the build triggers.
