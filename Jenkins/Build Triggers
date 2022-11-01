@@ -12,4 +12,12 @@ There will be 3 options need to be select only one.
 ● Trigger even if the build fails
 
 [Build periodically]
-If any changes is happend OR not happend in Source Code Management (SCM) tools like GitHub, Bitbucket, GitLab, ...etc. So the Jenkins job will be continuely keep on triggers periodically based on 
+If any changes is happend OR not happend in Source Code Management (SCM) tools like GitHub, Bitbucket, GitLab, ...etc. 
+So the Jenkins job will be continuely keep on triggers periodically based on scheduled cron job.
+Triggers the job periodically even if nothing is changed.
+After successfully scheduled the project build then the scheduler will invoke the build periodically according to specified duration.
+
+[]
+
+
+[]
