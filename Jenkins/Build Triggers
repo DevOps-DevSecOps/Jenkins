@@ -28,5 +28,5 @@ So if want to make localhost:8080 expose public then we can use some tools. In t
 It will triggers to build the jenkins job in two ways.
 ● When initializing a jenkins job with scheduling a cron, so based on scheduled cron it will build the jenkins job entirely from scratch very first time. 
 ● Later it will look for the changes, so whenever the changes is happend in Source Code Management (SCM) tools like GitHub, Bitbucket, GitLab, ...etc. So the jenkins job will be triggers based on scheduled cron job.
-It periodically polls the SCM to check whether changes were made (i.e. new commits) and builds the project if new commits were pushed since the last build.
+It periodically polls the SCM to check whether changes were made (i.e. new commits) and triggers/builds the project if new commits were pushed since the last build.
 After successfully scheduled, the scheduler polls the SCM according to specified duration in scheduler field and builds the project if new commits were pushed since the last build.
