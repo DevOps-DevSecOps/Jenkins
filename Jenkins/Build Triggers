@@ -17,7 +17,7 @@ So the Jenkins job will be continuely keep on triggers periodically based on sch
 Triggers the job periodically even if nothing is changed.
 After successfully scheduled the project build then the scheduler will invoke the build periodically according to specified duration.
 
-[]
+[Webhooks]
 
 
-[]
+[Poll SCM]
