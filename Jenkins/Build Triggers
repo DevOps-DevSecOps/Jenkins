@@ -18,6 +18,11 @@ Triggers the job periodically even if nothing is changed.
 After successfully scheduled the project build then the scheduler will invoke the build periodically according to specified duration.
 
 [Webhooks]
-
+Whenever the changes is happend in Source Code Management (SCM) tools like GitHub, Bitbucket, GitLab, ...etc. So webhook in jenkins will start trigger to build the job.
+A Webhook is a mechanism to automatically trigger the build of a Jenkins project in response to a commit pushed to a Git repository.
+It is an HTTP callback, an HTTP POST that occurs when something happens through a simple event-notification via HTTP POST.
+Source Code Management (SCM) tools like GitHub, Bitbucket, GitLab, ...etc webhooks in Jenkins are used to trigger the build whenever a developer commits something to the branch.
+If running Jenkins on localhost then writing "https://localhost:8080/XXXXXX-webhook/" will not work because Webhooks can only work with the public IP.
+So if want to make localhost:8080 expose public then we can use some tools. In this example, we used ngrok tool to expose my local address to the public.
 
 [Poll SCM]
