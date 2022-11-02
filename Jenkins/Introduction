@@ -1,0 +1,2 @@
+The entire Jenkins stores the configuration in "/var/lib/jenkins/".
+So we can manually change the settings in "/etc/sysconfig/jenkins" OR "/etc/default/jenkins" in jenkins home directory (installation) path.
