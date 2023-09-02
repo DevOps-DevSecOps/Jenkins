@@ -1,0 +1,31 @@
+pipeline {
+    agent {
+        docker {
+            // Use a Docker image with Node.js and npm pre-installed
+            image 'node:14' // You can specify the desired Node.js version here
+            args '-v $HOME/.npm-cache:/root/.npm'
+        }
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout your source code from version control
+                checkout scm
+            }
+        }
+
+        stage('Build and Test') {
+            steps {
+                // Install project dependencies using npm
+                sh 'npm install'
+                
+                // Run build and test commands
+                sh 'npm run build'
+                sh 'npm test'
+            }
+        }
+
+        // Add more stages for deployment, notifications, etc.
+    }
+}
