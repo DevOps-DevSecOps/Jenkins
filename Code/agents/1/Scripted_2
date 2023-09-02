@@ -1,0 +1,12 @@
+node('linux1') {
+  stage('checkout') {
+    checkout(..)
+    stash 'name-of-the-stash'
+  }
+}
+node('linux2') {
+  stage('build') {
+    unstash 'name-of-the-stash'
+    sh 'make'
+  }
+}
