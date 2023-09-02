@@ -7,14 +7,14 @@ pipeline {
               agent any
               steps{
                 echo "stage 1"
-                }
               }
+            }
             stage("Stage 2") {
               agent any
               steps{
                 echo "stage 2"
-                }
               }
+            }
           }
         }
     }
