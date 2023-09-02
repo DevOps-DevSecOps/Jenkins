@@ -1,0 +1,27 @@
+pipeline {
+    agent {
+        docker {
+            // Use a Docker image with Maven pre-installed
+            image 'maven:3.8.4-jdk-11'
+            args '-v $HOME/.m2:/root/.m2' // Mount Maven settings and repository cache
+        }
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout your source code from version control
+                checkout scm
+            }
+        }
+
+        stage('Build with Maven') {
+            steps {
+                // Build your project using Maven
+                sh 'mvn clean install'
+            }
+        }
+
+        // Add more stages for testing, deployment, etc.
+    }
+}
