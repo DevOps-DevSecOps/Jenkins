@@ -7,7 +7,7 @@ agent { label('small || medium') }
 agent { label('windows && jdk9') }
 
 
-// Script //
+// Scripted //
 
 node('small||medium') {
     // some block
