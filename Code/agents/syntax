@@ -1,0 +1,14 @@
+// Declarative //
+
+agent { label 'linux && java' }
+
+agent { label('small || medium') }
+
+agent { label('windows && jdk9') }
+
+
+// Script //
+
+node('small||medium') {
+    // some block
+}
