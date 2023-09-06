@@ -30,6 +30,6 @@ The vars directory also supports .txt files for the documentation of shared libr
 It is a regular Java source directory.
 It can add custom structured and object-oriented code Groovy code to extend your shared library code.
 ● resources
-All the non-groovy files required for pipelines can be managed in this folder.
+All the non-groovy OR unnecessary files required for pipelines can be managed in this folder.
 One such example is, might need a common JSON template to make an API call during the build.
 This JSON template can be stored in the resources folder and can be accessed in the shared library using the libraryResource function.
