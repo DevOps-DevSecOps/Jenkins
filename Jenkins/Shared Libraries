@@ -1,5 +1,5 @@
 Jenkins Shared Libraries are used for code reusability in Pipeline jobs.
-
+Jenkins Shared Libraries is a collection of Groovy scripts shared between different Jenkins jobs.
 
                 Project_Root_Folder
                 |
