@@ -1,0 +1,7 @@
+In Jenkins, go to Manage Jenkins → Configure System. Under Global Pipeline Libraries, add a library with the following settings:
+● Name: pipeline-library-demo
+● Default version: Specify a Git BRANCH_NAME
+● Retrieval method: Modern SCM
+● Source Code Management: Select the Git
+● Project repository: REMOTE_REPOSITORY_URL(HTTPS/SSH)/pipeline-shared-library
+Then finally → save & apply
