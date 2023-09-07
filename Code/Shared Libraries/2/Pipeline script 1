@@ -1,0 +1,9 @@
+@Library('pipeline-library-demo')_
+
+import com.qikqiak.GlobalVars
+
+stage('Demo') {
+    echo 'Hello world'
+    sayHi '阳明'
+    println GlobalVars.foo
+}
