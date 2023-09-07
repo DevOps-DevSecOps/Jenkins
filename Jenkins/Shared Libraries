@@ -6,7 +6,7 @@ Jenkins Shared Library is the concept of having a common pipeline code in the ve
 Developers use shared libraries to avoid writing the same code from scratch for multiple projects.
 It reduces the effort of the developer by keeping the same logic in multiple files.
 This drastically cuts down time spent on coding and helps avoid duplicate code.
-
+The structure of Jenkins Shared Libraries folder.
                 Project_Root_Folder
                 |
                 |
@@ -33,3 +33,9 @@ It can add custom structured and object-oriented code Groovy code to extend your
 All the non-groovy OR unnecessary files required for pipelines can be managed in this folder.
 One such example is, might need a common JSON template to make an API call during the build.
 This JSON template can be stored in the resources folder and can be accessed in the shared library using the libraryResource function.
+
+[EXAMPLE]
+We have five different Spring Boot applications in Microservice architecture.
+All of them need to be built using Maven, run Unit & Integration tests to ensure the integrity of code, packed as a JAR/WAR file & pushed to the artifactory.
+All five applications need their own Jenkinsfile, but the content of the Jenkinsfiles is going to be mostly the same.
+Jenkins Shared Library avoids this repetition of pipeline code by creating a shared library.
