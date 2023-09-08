@@ -18,7 +18,7 @@ The structure of Jenkins Shared Libraries folder.
                 |        |
                 |        |--- FILE_NAME.groovy
                 |
-                |------> resources
+                |------> resources (FOLDER)
                 |        |
                 |        |--- FILE_NAME.json
 ● vars
@@ -35,7 +35,12 @@ One such example is, might need a common JSON template to make an API call durin
 This JSON template can be stored in the resources folder and can be accessed in the shared library using the libraryResource function.
 
 [EXAMPLE]
+● 1
 We have five different Spring Boot applications in Microservice architecture.
 All of them need to be built using Maven, run Unit & Integration tests to ensure the integrity of code, packed as a JAR/WAR file & pushed to the artifactory.
 All five applications need their own Jenkinsfile, but the content of the Jenkinsfiles is going to be mostly the same.
 Jenkins Shared Library avoids this repetition of pipeline code by creating a shared library.
+● 2
+If we have 10 java microservices pipelines, then maven build step will be duplicated in all the 10 pipelines.
+Whenever a new service get added then will copy and paste the pipeline code again.
+Also want to change some parameter in the maven build step will have to do it all the pipeline manually.
