@@ -1,0 +1,17 @@
+@Library('javahome-demo') _
+
+pipeline{
+    agent any
+    stages{
+        stage('Demo'){
+            steps{
+                welcome("AWS DevOps")
+                welcome('DevSecOps')
+                script{
+                    calculator.add(2,4)
+                    calculator.mul(5,15)
+                }
+            }
+        }
+    }
+}
