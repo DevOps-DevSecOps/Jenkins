@@ -1,0 +1,2 @@
+sayHello 'Joe'
+sayHello() /* invoke with default arguments */
