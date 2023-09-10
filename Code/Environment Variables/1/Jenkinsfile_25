@@ -1,0 +1,22 @@
+pipeline{
+    agent any
+
+    environment{
+        USER_NAME = "Joe"
+        USER_ID = 42
+    }
+    stages{
+        stage("Using env vars"){
+            environment{
+                USER_ID = 32
+            }
+            steps{
+                echo "Current user id is ${env.USER_ID} type: ${env.USER_ID.class}"
+                script{
+                    env.USER_NAME = "Adam"
+                }
+                echo "Current user is ${env.USER_NAME}"
+            }
+        }
+    }
+}
