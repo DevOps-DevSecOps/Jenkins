@@ -1,0 +1,17 @@
+pipeline{
+    agent any
+    environment{
+          LT_USERNAME='racha10r@gmail.com'
+          LT_ACCESS_KEY='iHnnmi0atXDjDKIqckdBH0gU72Uf8zJb76EyNlXjzvGPzvr54'
+          LT_TUNNEL=true
+        }
+    stages{
+        stage('printing the environment variables'){
+            steps{
+                echo env.LT_USERNAME
+                echo env.LT_ACCESS_KEY
+                echo env.LT_TUNNEL
+            }
+        }
+    }
+}
