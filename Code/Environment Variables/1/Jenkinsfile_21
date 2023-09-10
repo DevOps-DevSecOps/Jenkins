@@ -1,0 +1,14 @@
+pipeline{
+    agent any
+
+    stages{
+        stage("Using env vars"){
+            environment{
+                USER_PATH = "/home/joe"
+            }
+            steps{
+                echo "Current user path is ${env.USER_PATH}"
+            }
+        }
+    }
+}
