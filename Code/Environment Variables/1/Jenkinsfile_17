@@ -1,11 +1,11 @@
 pipeline{
-	agent any
+    agent any
 
-	stages{
-		stage("List env vars"){
-			steps{
-				sh "printenv | sort"
-			}
-		}
-	}
+    stages{
+        stage("List env vars"){
+            steps{
+                sh "printenv | sort"
+            }
+        }
+    }
 }
