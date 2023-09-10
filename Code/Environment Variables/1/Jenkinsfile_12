@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+
+    environment {
+        DATE = "December 17th"
+    }
+
+    stages {
+        stage("Env Variables") {
+            environment {
+                NAME = "Alex"
+            }
+
+            steps {
+                echo "Today is ${env.DATE}"
+                echo "My name ${env.NAME}"
+
+                script {
+                    env.WEBSITE = "phoenixNAP KB"
+                }
+
+                echo "This is an example for ${env.WEBSITE}"
+
+                withEnv(["TEST_VARIABLE=TEST_VALUE"]) {
+                    echo "The value of TEST_VARIABLE is ${env.TEST_VARIABLE}"
+                }
+            }
+        }
+    }
+}
