@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+
+    environment {
+        MY_SECRET_KEY = "!@#hello#@!"
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    env.ANOTHER_VARIABLE = "another_value"
+                    echo "Setting environment variables"
+                    sh 'export ADDITIONAL_VARIABLE="additional_value"'
+                }
+            }
+        }
+    }
+}
