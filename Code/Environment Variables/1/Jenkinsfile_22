@@ -1,0 +1,14 @@
+pipeline{
+    agent any
+
+    stages{
+        stage("Using env vars"){
+            steps{
+                script{
+                    env.USER_GROUP = "users"
+                }
+                sh 'echo Current user group is $USER_GROUP'
+            }
+        }
+    }
+}
