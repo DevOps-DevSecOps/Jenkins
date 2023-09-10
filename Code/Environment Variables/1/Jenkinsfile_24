@@ -13,7 +13,7 @@ pipeline{
             steps{
                 echo "Current user id is ${env.USER_ID} type: ${env.USER_ID.class}"
                 withEnv(["USER_NAME=Bob"]){
-			        echo "Current user is ${env.USER_NAME}"
+                    echo "Current user is ${env.USER_NAME}"
                 }
             }
         }
