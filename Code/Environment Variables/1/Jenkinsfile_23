@@ -4,9 +4,10 @@ pipeline{
     stages{
         stage("Using env vars"){
             steps{
-                withEnv(["USER_PWD=secret", USER_IS_ADMIN=false]){
-                echo "Current user password is ${env.USER_PWD}"
-                sh 'echo Current user is admin? $USER_IS_ADMIN'
+                withEnv(["USER_PWD=secret", "USER_IS_ADMIN=false"]){
+                    echo "Current user password is ${env.USER_PWD}"
+                    sh 'echo Current user is admin? $USER_IS_ADMIN'
+                }
             }
         }
     }
