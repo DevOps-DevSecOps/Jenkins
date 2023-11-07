@@ -1,38 +1,50 @@
 The default Environment variables for Jenkins. 
 
 [BRANCH_NAME]
+$ echo $BRANCH_NAME
 
 [BUILD_NUMBER]
 The current build number.
+$ echo $BUILD_NUMBER
 
 [BUILD_ID]
 The current build id.
+$ echo $BUILD_ID
 
 [BUILD_TAG]
+$ echo $BUILD_TAG
 
 [BUILD_URL]
 The URL of this job build number. For example http://server:port/jenkins/job/foo/15/
+$ echo $BUILD_URL
 
 [BUILD_DISPLAY_NAME]
 The name of the current build.
+$ echo $BUILD_DISPLAY_NAME
 
 [JENKINS_HOME]
 Absolute path on the master node for Jenkins to store data.
+$ echo $JENKINS_HOME
 
 [JENKINS_URL]
 The URL of this job. For example http://server:port/jenkins/job/foo/
+$ echo $JENKINS_URL
 
 [JOB_NAME]
 Name of the project of this build.
+$ echo $JOB_NAME
 
 [JOB_URL]
 URL of Jenkins.
+$ echo $JOB_URL
 
 [NODE_NAME]
 Name of the "slave" or "master".
+$ echo $NODE_NAME
 
 [NODE_LABELS]
 Whitespace-separated list of labels that the node is assigned.
+$ echo $NODE_LABELS
 
 [WORKSPACE]
 Absolute path of the build as a workspace.
