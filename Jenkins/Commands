@@ -1,3 +1,6 @@
-# Install the 'Safe Restart' Plugin.
-Jenkins_HTTP_URL://Jenkins_IP_ADDRESS:Jenkins_PORT_NO/restart                        # forces a restart without waiting for the build to complete
-Jenkins_HTTP_URL://Jenkins_IP_ADDRESS:Jenkins_PORT_NO/safeRestart                    # allows all running builds to complete before it restarts
+Verify the version of Jenkins.
+$ jenkins --version
+
+Install the 'Safe Restart' Plugin.
+$ Jenkins_HTTP_URL://Jenkins_IP_ADDRESS:Jenkins_PORT_NO/restart                        # forces a restart without waiting for the build to complete
+$ Jenkins_HTTP_URL://Jenkins_IP_ADDRESS:Jenkins_PORT_NO/safeRestart                    # allows all running builds to complete before it restarts
