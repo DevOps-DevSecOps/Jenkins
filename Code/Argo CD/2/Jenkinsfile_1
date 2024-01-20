@@ -20,7 +20,7 @@ pipeline {
             }
         }
         stage("Checkout from SCM"){
-            steps {
+            steps{
                 script{
 //  GitHub password configured in Jenkins Credentials with the ID is 'github'
                     git credentialsId: 'github', 
@@ -29,6 +29,56 @@ pipeline {
                 }
             }
         }
-
+        stage("Build & Push Docker Image"){
+            steps{
+                script{
+                    docker_image = docker.build "${IMAGE_NAME}"
+                }
+            }
+        }
+        stage("Build & Push Docker Image"){
+            steps{
+                script{
+                    docker.withRegistry('',REGISTRY_CREDS){
+                        docker_image.push("$BUILD_NUMBER")
+                        docker_image.push('latest')
+                    }
+                }
+            }
+        }
+        stage ('Delete Docker Images'){
+            steps{
+                script{
+                    sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG}"
+                    sh "docker rmi ${IMAGE_NAME}:latest"
+                }
+            }
+        }
+        stage('Updatig Kubernetes deployment file'){
+            steps{
+                script{
+                    sh """
+                    cat deployment.yaml
+                    sed -i 's/${APP_NAME}.*/${APP_NAME}:${IMAGE_TAG}/g' deployment.yaml
+                    cat deployment.yaml
+                    """
+                }
+            }
+        }
+        stage('Push the changed deployment file to Git'){
+            steps{
+                script{
+                    sh """
+                      git config --global user.name "abcd"
+                      git config --global user.email "abcdxyz@gmail.com"
+                      git add deployment.yaml
+                      git commit -m "Updated the Deployment file"
+                    """
+                    withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
+                      sh "git push https://github.com/Ashfaque-9x/register-app.git main"
+                    }
+                }
+            }
+        }
     }
 }
