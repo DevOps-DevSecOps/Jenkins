@@ -1,0 +1,65 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKERHUB_USERNAME = "xyz"
+        APP_NAME = "argocd-app"
+        IMAGE_TAG = "${BUILD_NUMBER}"
+        IMAGE_NAME = "${DOCKERHUB_USERNAME}" + "/" + "${APP_NAME}"
+//  Docker Hub password configured in Jenkins Credentials with the ID is 'dockerhub'
+        REGISTRY_CREDS = 'dockerhub'
+        JENKINS_API_TOKEN = credentials("JENKINS_API_TOKEN")
+    }
+
+    stages{
+        stage('Cleanup Workspace'){
+            steps{
+                script{
+                   cleanWs()
+                }
+            }
+        }
+        stage("Checkout from SCM"){
+            steps{
+                script{
+//  GitHub password configured in Jenkins Credentials with the ID is 'github'
+                    git credentialsId: 'github', 
+                    url: 'https://github.com/Ashfaque-9x/register-app.git',
+                    branch: 'main'
+                }
+            }
+        }
+        stage("Build & Push Docker Image"){
+            steps{
+                script{
+                    docker_image = docker.build "${IMAGE_NAME}"
+                }
+            }
+        }
+        stage("Build & Push Docker Image"){
+            steps{
+                script{
+                    docker.withRegistry('',REGISTRY_CREDS){
+                        docker_image.push("$BUILD_NUMBER")
+                        docker_image.push('latest')
+                    }
+                }
+            }
+        }
+        stage ('Delete Docker Images'){
+            steps{
+                script{
+                    sh "docker rmi ${IMAGE_NAME}:${IMAGE_TAG}"
+                    sh "docker rmi ${IMAGE_NAME}:latest"
+                }
+            }
+        }
+       stage("Trigger CD Pipeline") {
+            steps {
+                script {
+                    sh "curl -v -k --user clouduser:1100a338c975eb40189c3fe2cf580b2bdf -X POST -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded' --data 'IMAGE_TAG=${IMAGE_TAG}' 'http://50.19.171.223:8080/job/gitops-register-app-cd/buildWithParameters?token=gitops-token'"
+                }
+            }
+       }
+    }
+}
