@@ -3,6 +3,7 @@ verify java installation "java -version".
 
 Then visit 'https://updates.jenkins-ci.org/download/war/' to download a particular version by uing a wget command.
 $ wget https://updates.jenkins-ci.org/download/war/2.162/jenkins.war
+$ wget https://get.jenkins.io/war-stable/2.426.3/jenkins.war
 
 $ java -jar jenkins.war ( default runs on 8080 port )
 
