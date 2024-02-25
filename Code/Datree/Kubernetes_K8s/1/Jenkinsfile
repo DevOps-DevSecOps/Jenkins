@@ -1,0 +1,16 @@
+pipeline{
+    agent any
+    stages{
+        stage('indentifying misconfigs using datree'){
+            steps{
+                script{
+                        withEnv(['DATREE_TOKEN=<your-account-token>']) {
+                              sh 'datree test *.yaml --only-k8s-files'
+                        }
+
+                }
+            }
+        }
+    }
+
+}
